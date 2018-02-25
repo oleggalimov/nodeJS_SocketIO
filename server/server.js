@@ -26,6 +26,7 @@ IO.on('connection', (socket)=>{
         socket.broadcast.emit('ServiceMessage', `User "${user}" has join!`);//broadcast to all except current user
     })
     socket.on('sendMessage', (message)=>{
+        console.log(message);
         IO.emit('message',message);
     });
     socket.on('disconnect',()=>{
