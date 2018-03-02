@@ -8,14 +8,14 @@
     
 </head>
 <body>
+    <ul id="messages"></ul>
     <h1>Hellow from Node!</h1>
     <form id="message-form" autocomplete="off">
         <input name="userName" id="UserName" type="text" placeholder="What's your name?" /><br/><br/>
         <input name="userMessage" id="userMessage" type="text" placeholder="What do you want to say?" disabled="disabled" />
         <button id="submitButton" disabled="disabled">Send</button>
     </form>
-    <ul id="messages">
-    </ul>
+    
     
     <script src='/socket.io/socket.io.js'></script>
     <script src="/js/libs/jquery-3.3.1.min.js"></script>
