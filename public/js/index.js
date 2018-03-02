@@ -1,3 +1,16 @@
+function scrollToBottom() {
+    let messages = $('#messages');
+    let newMessage = messages.children('li:last-child');
+    let clientHeight = messages.prop('clientHeight');
+    let scrollTop = messages.prop('scrollTop');
+    let scroHeight = messages.prop('scroHeight');
+    let newMessageHeight = newMessage.innerHeight();
+    let lastMessageHeight = newMessage.prev().innerHeight();
+    if (clientHeight+scrollTop + newMessageHeight+lastMessageHeight>= scroHeight) {
+
+    }
+}
+
 let socket = io();
 socket.on('connect', function () {
     
@@ -9,6 +22,7 @@ socket.on('ServiceMessage', function(message) {
     li.setAttribute("style", "color:green; font-style:italic;");
     li.textContent=`${message}`;
     $('#messages').append(li);
+    scrollToBottom();
 });
 socket.on('message', function(message) {
     // let li = document.createElement('li');
@@ -18,6 +32,7 @@ socket.on('message', function(message) {
     let template = $("#message-template").html();
     let html = Mustache.render(template,{message});
     $('#messages').append(html);
+    scrollToBottom();
 
 });
 
