@@ -24,10 +24,11 @@ IO.on('connection', (socket)=>{
         users.set(socket.id,user);
         //console.log(users);
         socket.broadcast.emit('ServiceMessage', `User "${user}" has join!`);//broadcast to all except current user
-    })
-    socket.on('sendMessage', (message)=>{
+    });
+    socket.on('sendMessage', (message,callback)=>{
         console.log(message);
         IO.emit('message',message);
+        callback();
     });
     socket.on('disconnect',()=>{
         // console.log('user is disconnected')
