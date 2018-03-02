@@ -11,9 +11,14 @@ socket.on('ServiceMessage', function(message) {
     $('#messages').append(li);
 });
 socket.on('message', function(message) {
-    let li = document.createElement('li');
-    li.innerHTML=`<text style="color:blue; font-style:italic;">${message.from}: </text> ${message.text}`;
-    $('#messages').append(li);
+    // let li = document.createElement('li');
+    // li.innerHTML=`<text style="color:blue; font-style:italic;">${message.from}: </text> ${message.text}`;
+    // $('#messages').append(li);
+
+    let template = $("#message-template").html();
+    let html = Mustache.render(template,{message});
+    $('#messages').append(html);
+
 });
 
 socket.on('disconnect', function () { 
@@ -35,10 +40,12 @@ $('#message-form').on('submit', function (event) {
     event.preventDefault();
     socket.emit('sendMessage', {
         from: $('#UserName').val(),
-        text: $('[name=userMessage]').val()
+        text: $('[name=userMessage]').val(),
+        date:moment().format("DD.MM.YYYY h:mm:ss")
     }, function() {
         $("#userMessage").val('');
     });
+    
 
 });
 $('#message-form').on('keypress', function (key) {
