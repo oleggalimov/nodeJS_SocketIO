@@ -1,53 +1,37 @@
 <!DOCTYPE html>
 <html>
-
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>BlaBlaChat</title>
+    <title>BlaBlaChat | Join</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="/css/style.css"></link>
 </head>
+<body class="centered-form">
+    <div class="centered-from__form">
+        <form action="/chat.html">
+                <div class="form-field">
+                    <h3>Join chat</h3>
+                </div>
+                <div class="form-field">
+                    <label>
+                        Display name
+                    </label>
+                    <input type="text" name="name" autofocus/>
+                </div>
+                <div class="form-field">
+                    <label>
+                            Room
+                    </label>
+                    <input type="text" name="room" />
+                </div>
+                <div class="form-field">
+                    <button>Join</button>
+                </div>
 
-<body class="chat">
-    <div class="chat__sidebar">
-        <h3>People</h3>
-        <div id="users"></div>
+        </form>
+      
     </div>
-    <div class="chat__main">
-        <ul id="messages" class="chat__messages"></ul>
-        <div class="chat__footer">
-            <form id="message-form" autocomplete="off">
-                <input name="userName" id="UserName" type="text" placeholder="What's your name?" autofocus/>
-                <input name="userMessage" id="userMessage" type="text" placeholder="What do you want to say?" disabled="disabled" autofocus autocomplete="off"/>
-                <button id="submitButton" disabled="disabled">Send</button>
-                </form>
-            </div>
-        </div>
-    </div>
-
-
-    <script id="message-template" type="text/template">
-        <li class="message">
-            <div class="message__title">
-                <h4> {{ message.from }} </h4>
-                <span>{{ message.date }}</span>
-            </div>
-            <div class="message__body">
-                <p> {{ message.text }} </p>
-            </div>
-        </li>
-    </script>
-
-
-    <script src='/socket.io/socket.io.js'></script>
-    <script src="/js/libs/jquery-3.3.1.min.js"></script>
-    <script src="/js/index.js"></script>
-    <script src="/js/libs/mustache.js"></script>
-    <script src="/js/libs/moment.js"></script>
-
-
-
+    
 </body>
-
 </html>

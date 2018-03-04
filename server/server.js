@@ -4,6 +4,8 @@ const port = process.env.PORT || 3000;
 const publicPath = path.join(__dirname,'../public');
 const socketIO = require('socket.io');
 const http = require('http');
+const {isRealString} = require('./utils/validation');
+
 let app = express();
 let server = http.createServer(app);
 
@@ -16,8 +18,14 @@ let users = new Map();
 IO.on('connection', (socket)=>{
     // console.log('new User connected');
     // IO.emit('ServiceMessage', "New user has join!");//broadcast to all
-    console.log("New user opened browser");
+    //console.log("New user opened browser");
     // socket.broadcast.emit('ServiceMessage', "New user has join!");
+    socket.on ('join', (params, callback)=>{
+      if (!isRealString(params.name)||!isRealString(params.room)) {
+        callback('Name and room are required!');
+      };
+      callback();  
+    } );
     socket.on('newUser', (user)=>{
         //IO.emit('ServiceMessage', `User "${user}" has join!`);//broadcast to all
         //save user in map
