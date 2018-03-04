@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>BlaBlaChat | Chat</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/css/style.css"></link>
+</head>
+
+<body class="chat">
+    <div class="chat__sidebar">
+        <h3>People</h3>
+        <div id="users"></div>
+    </div>
+    <div class="chat__main">
+        <ul id="messages" class="chat__messages"></ul>
+        <div class="chat__footer">
+            <form id="message-form" autocomplete="off">
+                <input name="userMessage" id="userMessage" type="text" placeholder="What do you want to say?" autofocus autocomplete="off"/>
+                <button id="submitButton">Send</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+    <script id="message-template" type="text/template">
+        <li class="message">
+            <div class="message__title">
+                <h4> {{ from }} </h4>
+                <span>{{ when }}</span>
+            </div>
+            <div class="message__body">
+                <p> {{ message }} </p>
+            </div>
+        </li>
+    </script>
+
+
+    <script src='/socket.io/socket.io.js'></script>
+    <script src="/js/libs/jquery-3.3.1.min.js"></script>
+    <script src="/js/chat.js"></script>
+    <script src="/js/libs/mustache.js"></script>
+    <script src="/js/libs/moment.js"></script>
+    <script src="/js/libs/deparam.js"></script>
+
+
+</body>
+
+</html>
